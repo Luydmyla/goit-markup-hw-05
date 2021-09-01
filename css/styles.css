@@ -733,24 +733,23 @@ address {
   color: var(--title-text-color);
   margin-bottom: 4px;
 }
-/* .project-actions {
+.project-actions {
   position: absolute;
   opacity: 0;
   top: 0;
   left: 0;
-  width: 370px;
+  width: 100%;
   height: 294px;
   display: flex;
   justify-content: center;
-
   padding: 63px 24px;
   background: var(--hover-overlay-color);
-} */
+}
 
 .project-text {
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  left: 0;
+  left: 0; */
   width: 100%;
   height: 100%;
   font-weight: 400;
@@ -762,11 +761,11 @@ address {
 
   color: var(--second-text-color);
 }
-.project-item:hover::before {
+.project-item:hover .project-actions {
   opacity: 1;
 }
-
-.project-item::before {
+/* попробовала через бефор, не доделала  */
+/* .project-item::before {
   display: inline-block;
   position: absolute;
   content: "";
@@ -774,7 +773,7 @@ address {
   height: 100%;
   background: var(--hover-overlay-color);
   opacity: 0;
-}
+} */
 
 .project-footer p {
   font-size: 16px;
