@@ -638,7 +638,7 @@ address {
 }
 /*  ----- бекдроп и модальное окно в скрытом состоянии, стили для скрытого окна*/
 .backdrop.is-hidden .modal {
-  transform: translate(-50%, -50%) scale(0.5) opacity(1);
+  transform: translate(-50%, -50%) scale(0.1);
 }
 /*----- само модальное окно--- */
 .modal {
@@ -653,7 +653,7 @@ address {
   border-radius: 4px;
   transform: translate(-50%, -50%) scale(1);
   transition: transform 750ms var(--transition-timing-function),
-    opacity 2500ms var(--transition-timing-function);
+    opacity 500ms var(--transition-timing-function);
   opacity: 1;
 }
 
