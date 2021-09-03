@@ -20,6 +20,8 @@ html {
   --socials-icon-color-second: rgba(255, 255, 255, 0.1);
   --border-color: #eeeeee;
   --hover-overlay-color: rgba(33, 150, 243, 0.9);
+  /* --transition-duration: 2500ms 
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); */
 }
 body {
   font-family: "Roboto", sans-serif;
@@ -87,6 +89,7 @@ img {
   color: #000000;
   padding-top: 24px;
   padding-bottom: 25px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   margin-right: 93px;
 }
 
@@ -126,12 +129,13 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--title-text-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   padding-top: 32px;
   padding-bottom: 32px;
 }
-.site-navig :hover,
-.site-navig :focus {
+.site-item .link:hover,
+.site-item .link:focus {
   color: var(--accent-color);
 }
 
@@ -166,13 +170,6 @@ img {
   margin-right: 10px;
 }
 
-/* .auth-navig .link:hover .icon-envelope,
-.auth-navig .link:hover .icon-smartphone,
-.auth-navig .link:focus .icon-envelope,
-.auth-navig .link:focus .icon-smartphone {
-  fill: var(--accent-color);
-} */
-
 .auth-navig {
   display: flex;
   margin-left: auto;
@@ -188,6 +185,7 @@ img {
   /* margin-top: 32px; */
   /* margin-bottom: 32px; */
   margin-left: auto;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* background-color: rgba(218, 233, 16, 0.918); */
 }
@@ -263,6 +261,8 @@ img {
   padding: 10px 32px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   margin: auto;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button-hero:hover,
 .button-hero:focus {
@@ -453,6 +453,7 @@ img {
   justify-content: center;
   border-radius: 50%;
   background-color: var(--background-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .socials-list {
   display: flex;
@@ -463,6 +464,7 @@ img {
 }
 .socials-icon {
   fill: var(--socials-icon-color-first);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .socials-link:hover,
 .socials-link:focus,
@@ -488,9 +490,11 @@ img {
   border-radius: 4px;
   padding: 16px 32px;
   background-color: var(--background-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .clients-icon {
   fill: var(--socials-icon-color-first);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-link:hover,
@@ -520,6 +524,7 @@ img {
   line-height: 1.19;
   letter-spacing: 0.03em;
   color: var(--second-text-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo-footer:hover,
@@ -535,6 +540,7 @@ address {
 .adress-link {
   display: block;
   color: var(--second-background-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .adress-link:hover,
 .adress-link:focus {
@@ -547,9 +553,10 @@ address {
 .footer-navig-link {
   display: block;
   color: rgba(255, 255, 255, 0.6);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.footer-navig .link:hover,
-.footer-navig .link:focus {
+.footer-navig:hover .footer-navig-link,
+.footer-navig-link:focus {
   color: var(--accent-color);
 }
 /* -----СОЦ ССЫЛКИ В ФУТЕРЕ */
@@ -572,9 +579,11 @@ address {
 }
 .socials-icon {
   fill: var(--socials-icon-color-first);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .socials-link {
   background-color: var(--socials-icon-color-second);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .socials-footer-icon {
   fill: var(--second-text-color);
@@ -608,18 +617,21 @@ address {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.2);
   /* ---можно спозиционировать  модальное окно флексом */
   /* display: flex;
   justify-content: center;
   align-items: center; */
+  transition: opasity;
 }
 .backdrop.is-hidden {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 }
+
 /*----- само модальное окно--- */
 .modal {
   position: absolute;
@@ -627,11 +639,34 @@ address {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 528px;
-  height: 581px;
+  min-height: 581px;
   background-color: var(--background-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+}
+@keyframes openModal {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes animateOpacitty {
+  0% {
+    opacity: (0);
+  }
+
+  100% {
+    opacity: (1);
+  }
 }
 /* ----КНОПКА ЗАКРЫТЬ---- */
 .button-close {
@@ -647,9 +682,18 @@ address {
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   background-color: var(--background-color);
+  /* transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+}
+.button-close:hover,
+.button-close:focus,
+.button-close .icon-close:hover,
+.button-close .icon-close:focus {
+  fill: var(--accent-color);
+  border-color: var(--accent-color);
 }
 .icon-close {
   fill: #000000;
+  /* transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1); */
 }
 /*--------- стили для страницы портфолио--------------- */
 /* секция меню */
@@ -674,6 +718,8 @@ address {
   border: 0;
   border-radius: 4px;
   padding: 6px 22px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filters-item button:hover,
@@ -704,7 +750,7 @@ address {
 }
 
 .project-item {
-  position: relative;
+  /* position: relative; */
   width: 370px;
   margin-bottom: 30px;
   margin-right: 30px;
@@ -725,6 +771,12 @@ address {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+.project-item:hover .project-actions,
+.project-item:focus .project-actions {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
 .project-title {
   font-weight: 700;
   font-size: 18px;
@@ -732,6 +784,10 @@ address {
   letter-spacing: 0.06em;
   color: var(--title-text-color);
   margin-bottom: 4px;
+}
+.project-overlay {
+  position: relative;
+  overflow: hidden;
 }
 .project-actions {
   position: absolute;
@@ -742,38 +798,27 @@ address {
   height: 294px;
   display: flex;
   justify-content: center;
-  padding: 63px 24px;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background: var(--hover-overlay-color);
 }
 
 .project-text {
   /* position: absolute;
   top: 0;
-  left: 0; */
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 100%; */
   font-weight: 400;
   font-size: 18px;
   line-height: 1.56;
   letter-spacing: 0.03em;
-
+  padding: 63px 24px;
   text-align: left;
 
   color: var(--second-text-color);
 }
-.project-item:hover .project-actions {
-  opacity: 1;
-}
-/* попробовала через бефор, не доделала  */
-/* .project-item::before {
-  display: inline-block;
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: var(--hover-overlay-color);
-  opacity: 0;
-} */
 
 .project-footer p {
   font-size: 16px;
